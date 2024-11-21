@@ -196,22 +196,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     document.getElementById('dropdown-content').addEventListener('click', function (event) {
-        // Check if the click happened on a checkbox
+        
         if (event.target.tagName === 'INPUT' && event.target.type === 'checkbox') {
-            // Let the default browser behavior handle the checkbox state
+            
             return;
         }
 
-        // If the click happened on a label, let the label toggle the checkbox as usual
+        
         if (event.target.tagName === 'LABEL') {
             const checkbox = event.target.querySelector('input[type="checkbox"]');
             if (checkbox) {
-                // Do not toggle manually; let the label handle it
+                
                 return;
             }
         }
 
-        // Handle other clicks as needed
+        
     });
 
 
@@ -1239,6 +1239,7 @@ function guardarCambios(email, nuevaFoto) {
     } else {
         if (nuevaCiudad) {
             modificarUsuarioCiudad(email, nuevaCiudad);
+            agregarCoordenadasUsuario(email,nuevaCiudad);
             limpiarCheckboxesCiudad();
             x = 1;
         }
@@ -1611,4 +1612,70 @@ function initProfileMap(lat, lng, nickname) {
             url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
         },
     });
+}
+function agregarCoordenadasUsuario(email, ciudad) {
+    var solicitud = indexedDB.open("vitomaite13", 1);
+
+    solicitud.onsuccess = function (evento) {
+        var db = evento.target.result;
+        var transaction = db.transaction(["Usuarios"], "readwrite");
+        var usuariosStore = transaction.objectStore("Usuarios");
+
+        // Buscar al usuario por su email
+        var indice = usuariosStore.index("email");
+        var solicitudUsuario = indice.get(email);
+
+        solicitudUsuario.onsuccess = function () {
+            var usuario = solicitudUsuario.result;
+
+            if (usuario) {
+                // Actualizamos la ciudad si es diferente
+                if (ciudad) usuario.ciudad = ciudad;
+
+                // Generamos coordenadas según la ciudad
+                switch (ciudad) {
+                    case "Donostia/San Sebastián":
+                        usuario.latitud = generarNumeroAleatorio(43.3000, 43.3300);
+                        usuario.longitud = generarNumeroAleatorio(-1.9900, -1.9700);
+                        break;
+                    case "Vitoria-Gasteiz":
+                        usuario.latitud = generarNumeroAleatorio(42.8300, 42.8600);
+                        usuario.longitud = generarNumeroAleatorio(-2.6800, -2.6500);
+                        break;
+                    case "Bilbao":
+                        usuario.latitud = generarNumeroAleatorio(43.2500, 43.2700);
+                        usuario.longitud = generarNumeroAleatorio(-2.9500, -2.9200);
+                        break;
+                    default:
+                        console.log("Ciudad desconocida:", ciudad);
+                        return;
+                }
+
+                // Guardamos los cambios en la base de datos
+                var solicitudActualizacion = usuariosStore.put(usuario);
+                sessionStorage.setItem(email, JSON.stringify(usuario));
+                solicitudActualizacion.onsuccess = function () {
+                    console.log(`Usuario ${usuario.nombre} actualizado con coordenadas:`, usuario);
+                };
+                solicitudActualizacion.onerror = function (evento) {
+                    console.error("Error al actualizar el usuario:", evento.target.error);
+                };
+            } else {
+                alert("Usuario no encontrado.");
+            }
+        };
+
+        solicitudUsuario.onerror = function () {
+            console.error("Error al buscar el usuario.");
+        };
+    };
+
+    solicitud.onerror = function () {
+        console.error("Error al abrir la base de datos.");
+    };
+}
+
+// Función para generar un número aleatorio en un rango dado
+function generarNumeroAleatorio(min, max) {
+    return Math.random() * (max - min) + min;
 }
