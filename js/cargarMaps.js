@@ -283,6 +283,7 @@ function setGenderPreference(preference) {
     modal22.style.display = "none";
 
     cargarUsuariosConPreferencia(preference);
+    cargarUbicacionActual();
 }
 
 function cargarUsuariosConPreferencia(preference) {
