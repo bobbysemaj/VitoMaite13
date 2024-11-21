@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VitoMaite - Logueado</title>
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
+        <script src="js/indexLogueado.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXTINCA8nry_Eu01eYvGVbm0hDxrMdIiI&callback=initUserMap" async defer></script>
+        <link rel="icon" type="image/ico" href="img/logo.png"/>
+    </head>
+    <body>
+        <header>
+            <h1 class="welcome-header">Bienvenido a VitoMaite.</h1>
+            <div class="top-right">
+                <a href="#" id="profileLink">Perfil</a>
+                <span class="divider">|</span>
+                <a href="#" id="logoutBtn">Cerrar Sesión</a>
+            </div>
+        </header>
+
+        <main>
+            <div class="center-content">
+
+                <div class="map-container">
+                    <img src="img/map.jpg" alt="Mapa" class="map-image">
+                </div>
+
+
+
+                
+                <img src="img/logo.png" alt="Logo de VitoMaite" class="logo-image">
+
+                
+                <section>
+                    <h2>Buscar Candidatos</h2>
+                    <form id="searchForm" class="search-container">
+                        <div class="search-box">
+                            <input type="text" id="searchQuery" name="query" placeholder="Buscar candidatos...">
+                            <button type="button" class="search-button" id="searchButton">🔍</button>
+                            <button type="button" class="dropdown-button" id="dropdownButton">Filtrar por Criterios</button>
+                        </div>
+                        <div id="dropdown-content" class="dropdown-content">
+                            <div class="slider-container">
+                                <p>Fije la edad mínima deseada:</p>
+                                <input type="range" id="ageMin" name="ageMin" min="18" max="100" value="18" oninput="updateAgeMin(this.value)">
+                                <p>Edad mínima: <span id="min-age-label">18</span></p>
+                            </div>
+                            <div class="slider-container">
+                                <p>Fije la edad máxima deseada:</p>
+                                <input type="range" id="ageMax" name="ageMax" min="18" max="100" value="35" oninput="updateAgeMax(this.value)">
+                                <p>Edad máxima: <span id="max-age-label">35</span></p>
+                            </div>
+                            <label for="gender">Género:</label>
+                            <div class="gender-options">
+                                <label><input type="checkbox" id="hombre" name="gender" value="hombre"> Hombre</label>
+                                <label><input type="checkbox" id="mujer" name="gender" value="mujer"> Mujer</label>
+                                <label><input type="checkbox" id="otro" name="gender" value="otro"> Otro</label>
+                            </div>
+                            <label for="hobbies">Hobbies:</label>
+                            <div class="hobby-options">
+                                <!-- Los checkboxes se agregarán aquí mediante JavaScript -->
+                            </div>
+
+                            <label for="ciudad">Ciudad:</label>
+                            <div class="city-options">
+                                <label><input type="checkbox" id="bilbao" name="ciudad" value="Bilbao"> Bilbao</label>
+                                <label><input type="checkbox" id="donostia" name="ciudad" value="Donostia/San Sebastián"> Donostia/San Sebastián</label>
+                                <label><input type="checkbox" id="vitoria" name="ciudad" value="Vitoria-Gasteiz"> Vitoria-Gasteiz</label>
+                            </div>
+
+
+
+
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Galería de imágenes -->
+                <div class="image-gallery">
+
+                </div>
+
+                <div id="userProfileModal" class="modal">
+                    <div class="modal-content">
+                        <span id="closeModal" style="cursor:pointer; float:right; color:black;">&times;</span>
+                        <img id="profileImage" src="" alt="Perfil" class="enlarged-image">
+                        <div id="profileOptions">
+                            <h2 id="profileNickname"></h2>
+                            <p id="profileCity"></p>
+                            <p id="profileAge"></p>
+                            <p id="profileHobbies"></p>
+
+                        </div>
+                        <div id="profileMapContainer" style="width: 100%; height: 300px; margin-top: 20px; display: none;"></div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+
+
+
+
+
+        
+        
+        <div id="profileModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span id="closeProfileModalBtn" style="cursor:pointer; float:right;">&times;</span>
+                <h2>Opciones de Perfil</h2>
+                <div>
+                    <a href="cargarMaps.html?initMap=true" id="searchGeoBtn">Buscar por geolocalización</a>
+
+                </div>
+                <div>
+                    <a href="#" id="modProfBtn">Modificar perfil</a>
+                </div>
+                <div>
+                    <a href="#" id="modHobbiesBtn">Modificar hobbies</a>
+                </div>
+                <div>
+                    <a href="#" id="visitorsBtn">Ver quien ha visitado mi perfil</a>
+                </div>
+                <div>
+                    <a href="#" id="likedBtn">Ver los perfiles a los que les gusto</a>
+                </div>
+                <div>
+                    <a href="#" id="matchedBtn">Ver los perfiles matcheados</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="editProfileModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span id="closeEditProfileModalBtn" style="cursor:pointer;">&times;</span>
+                <h2>Modificar Perfil</h2>
+                <div class="form-group">
+                    <label for="newPhoto">Nueva foto:</label>
+                    <input type="file" id="newPhoto" accept="image/*">
+                    <div id="photoPreviewContainer" style="margin-top: 10px;">
+                        <img id="photoPreview" src="" alt="Vista previa" style="max-width: 100%; display: none;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Ciudad:</label>
+                    <div class="city-option">
+                        <label><input type="checkbox" name="city" value="Bilbao"> Bilbao</label>
+                    </div>
+                    <div class="city-option">
+                        <label><input type="checkbox" name="city" value="Donostia/San Sebastián"> Donostia/San Sebastián</label>
+                    </div>
+                    <div class="city-option">
+                        <label><input type="checkbox" name="city" value="Vitoria-Gasteiz"> Vitoria-Gasteiz</label>
+                    </div>
+                </div>
+
+                <button type="button" id="saveProfileBtn">Guardar cambios</button>
+
+            </div>
+        </div>
+
+        <div id="editHobbiesModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span id="closeEditHobbiesModalBtn" style="cursor:pointer;">&times;</span>
+                <h2>Modificar Hobbies</h2>
+                <div class="hobby-options1">
+                    <!-- Los checkboxes de hobbies se agregarán dinámicamente aquí -->
+                </div>
+                <button type="button" id="saveHobbiesBtn">Guardar cambios</button>
+            </div>
+        </div>
+
+        <div id="successModal" class="successModal" style="display: none;">
+            <div class="successModal-content" style="text-align: center; padding: 20px; border-radius: 8px;">
+                <h3>Perfil modificado con éxito</h3>
+                <button id="closeSuccessModalBtn" style="background-color: red; color: white; border: none; padding: 10px 20px; margin-top: 20px; cursor: pointer; border-radius: 5px;">OK</button>
+            </div>
+        </div>
+
+        <div id="visitasModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span id="closeVisitasModalBtn" style="cursor:pointer; float:right;">&times;</span>
+                <h2>Visitas a mi perfil</h2>
+                <ul id="visitasList"></ul>
+            </div>
+        </div>
+        <div id="likesRModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span id="closeRLikesModalBtn" style="cursor:pointer; float:right;">&times;</span>
+                <h2>Likes Recibidos por mi perfil</h2>
+                <ul id="likesList"></ul>
+            </div>
+        </div>
+        <div id="likesDModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span id="closeDLikesModalBtn" style="cursor:pointer; float:right;">&times;</span>
+                <h2>Matches con mi perfil</h2>
+                <ul id="likesDList"></ul>
+            </div>
+        </div>
+
+
+        <footer>
+            <div class="footer-links">
+                <span>FAQ</span> | <span>Reseñas</span>
+            </div>
+            <p>&copy; 2024 VitoMaite. Todos los derechos reservados.</p>
+        </footer>
+
+    </body>
+</html>

@@ -1,0 +1,716 @@
+/* Estilos para el header */
+header {
+    background-color: #cc0000; /* Rojo */
+    padding: 20px 0;
+    position: relative;
+    margin-bottom: 0; /* Eliminar margen inferior del header */
+}
+
+/* Estilos para los enlaces en la parte superior derecha */
+.top-right {
+    position: absolute;
+    top: 10px; /* Posición en la parte superior */
+    right: 10px; /* Alineado a la derecha */
+}
+
+.top-right a {
+    color: white; /* Cambiar a blanco */
+    text-decoration: none; /* Eliminar subrayado */
+    font-weight: bold;
+    margin-left: 10px; /* Espaciado entre enlaces */
+}
+
+.top-right a:hover {
+    text-decoration: underline; /* Subrayar solo al pasar el mouse */
+}
+
+/* Estilo para la barra | entre los enlaces */
+.divider {
+    color: white;
+    margin: 0 10px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* La altura mínima del body es la altura total de la pantalla */
+    margin: 0;
+}
+
+main {
+    flex: 1; /* El contenido principal toma todo el espacio disponible */
+}
+
+footer {
+    position: relative; /* Posición relativa para mantenerlo en el flujo del documento */
+    z-index: 1; /* Asegura que el footer esté por encima de la imagen de fondo */
+    width: 100%; /* Ancho completo */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente opcional para mejor visibilidad */
+    color: white; /* Texto blanco para contraste */
+    text-align: center;
+    padding: 10px 0; /* Espaciado vertical */
+}
+
+.footer-links a {
+    color: #cc0000; /* Asegura que los enlaces sean blancos */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    font-weight: bold;
+    margin: 0 10px; /* Espaciado entre los enlaces */
+}
+
+.footer-links a:hover {
+    text-decoration: underline; /* Subraya los enlaces al pasar el mouse */
+}
+
+
+.pixelated {
+    image-rendering: pixelated; /* Efecto de pixelado */
+    width: 150px;
+    height: 150px;
+}
+
+/* Estilos para centrar el contenido principal */
+.center-content {
+    text-align: center;
+    padding: 20px;
+    color: white;
+    position: relative;
+    z-index: 2; /* Asegura que el contenido se superponga al mapa */
+}
+
+/* Ajustes para el logo */
+.logo-image {
+    display: block;
+    margin: 10px auto; /* Logo entre Bienvenido y Buscar */
+    width: 150px; /* Ajusta el tamaño del logo */
+    z-index: 2; /* Asegura que el logo esté sobre el mapa */
+}
+
+/* Contenedor para el cuadro de búsqueda y los botones */
+.search-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 0px;
+    width: 350px; /* Ajuste de ancho */
+    z-index: 2; /* Asegura que se superponga al mapa */
+}
+/* Contenedor del cuadro de búsqueda */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ancho completo */
+}
+
+/* Input de texto */
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding-right: 100px; /* Espacio para los botones */
+}
+
+/* Ajuste para el input de email y contraseña en el modal */
+#loginModal input[type="text"],
+#loginModal input[type="password"] {
+    width: 80%; /* Ancho ajustado al 80% */
+    padding: 10px; /* Mismo padding */
+    font-size: 16px; /* Mismo tamaño de fuente */
+    border: 2px solid #ccc; /* Borde igual */
+    border-radius: 4px; /* Bordes redondeados */
+    margin-bottom: 10px; /* Espaciado entre inputs */
+}
+
+/*/* Botón de lupa */
+.search-button {
+    position: absolute;
+    right: 150px; /* Espacio desde el borde derecho */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Botón de filtrar */
+.dropdown-button {
+    position: absolute;
+    right: 10px; /* Espacio desde el borde derecho */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Estilos para el contenido del dropdown (inicialmente oculto) */
+.dropdown-content {
+    display: none;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    max-height: 250px; /* Limitar altura */
+    overflow-y: auto; /* Permitir scroll si el contenido es muy alto */
+    text-align: left;
+    color: #333;
+    z-index: 1000;
+}
+/* Corregir problemas de clics en el dropdown */
+.dropdown-content input[type="checkbox"] {
+    z-index: 9000;
+    margin-right: 5px; /* Espacio entre el checkbox y el texto */
+    pointer-events: auto; /* Asegura que los checkboxes sean clickeables */
+}
+
+.dropdown-content input {
+    margin: 5px 0;
+    color: #333;
+}
+
+/* Estilos para el slider de edad */
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input[type="range"] {
+    width: 100%; /* Hacer que el slider ocupe todo el ancho */
+    
+}
+
+/* Estilos para los checkboxes de género */
+.gender-options {
+    display: flex;
+    gap: 15px; /* Espaciado entre las opciones */
+    margin-top: 10px;
+    color: #333;
+}
+
+.gender-options label {
+    display: inline-flex;
+    align-items: center;
+    color: #333;
+}
+
+.gender-options input {
+    margin-right: 5px;
+    color: #333;
+}
+
+/* Estilos para el modal */
+#loginModal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 100; /* Asegura que esté encima de todo */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro */
+}
+/* Ajustar el formulario de login */
+#loginModal form {
+    display: flex;
+    flex-direction: column; /* Los elementos estarán uno debajo del otro */
+    align-items: flex-start; /* Alinea a la izquierda los campos */
+}
+
+/* Los inputs ocuparán todo el ancho disponible */
+#loginModal input[type="text"],
+#loginModal input[type="password"] {
+    width: 90%; /* Ancho completo */
+    margin-bottom: 15px; /* Espacio entre los campos */
+}
+
+/* Asegurar que las etiquetas también estén en línea aparte */
+#loginModal label {
+    display: block; /* Asegura que las etiquetas estén en una línea separada */
+    margin-bottom: 5px; /* Espacio entre la etiqueta y el input */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 30%; /* Ajustamos el tamaño a un 30% de la ventana */
+    max-width: 300px; /* Tamaño máximo para que no sea muy grande */
+    text-align: center;
+}
+
+.image-gallery {
+    display: flex; /* Usar flexbox para alinear en fila */
+    justify-content: center; /* Centrar las imágenes horizontalmente */
+    flex-wrap: wrap; /* Permitir que se ajusten si no hay espacio */
+    margin-top: 20px; /* Espaciado superior si es necesario */
+    position: relative;
+    z-index: 2; /* Asegura que las imágenes estén sobre el mapa */
+}
+
+.image-container {
+    position: relative; /* Necesario para que el candado se superponga correctamente */
+    display: inline-block;
+    text-align: center; /* Centra el nombre de usuario debajo de la imagen */
+    margin: 10px;
+    
+}
+
+
+
+/* Estilos para la imagen del usuario */
+.user-image {
+    width: 200px; /* Ajusta el tamaño de la foto del usuario */
+    height: auto; /* Mantiene la proporción */
+    position: relative; /* Mantiene la imagen como el fondo */
+    z-index: 1; /* Imagen por debajo del candado */
+}
+
+/* Estilos para la imagen del candado */
+.lock-image {
+    position: absolute; /* Se posiciona sobre la imagen del usuario */
+    top: 0; /* Alineado en la parte superior de la imagen */
+    left: 0;/* Alineado a la izquierda de la imagen */
+    bottom: 10px;
+    width: 100%; /* El candado cubrirá toda la imagen del usuario */
+    height: 100%; /* Mantiene la proporción */
+    z-index: 2; /* Asegúrate de que el candado esté por encima de la imagen */
+}
+
+.dropdown-content label {
+    
+    display: block;
+    margin-top: 10px;
+}
+
+.dropdown-content select {
+    width: 100%; /* Ajusta al ancho del contenedor */
+    margin-top: 5px;
+}
+
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 100; /* Encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+}
+
+/* Cambios realizados para el mapa de fondo */
+html, body {
+    height: 100%; /* Altura completa de la pantalla */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Organiza el contenido en columnas */
+}
+
+.map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Hace que la imagen ocupe toda la altura del viewport */
+    z-index: 1; /* El mapa estará en el fondo */
+}
+
+
+
+.logo-image, .search-container, .center-content {
+    position: relative;
+    z-index: 2; /* Asegura que estos elementos se muestren sobre el mapa */
+}
+
+.enlarged-image {
+    width: 80%; /* Imagen más pequeña al abrirse */
+    height: auto; /* Mantiene la proporción */
+    display: block;
+    margin: 0 auto;
+}
+
+.map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esto asegura que la imagen cubra todo el fondo */
+    z-index: 1;
+}
+.welcome-header {
+    color: white; /* Color del texto */
+    text-align: center; /* Centrar el texto */
+    margin-top: 10px; /* Margen superior para separar del menú */
+    font-size: 24px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+}
+#closeModal {
+    color: black; /* Hace que la "X" sea negra */
+    font-size: 24px; /* Si deseas ajustar el tamaño */
+}
+
+#closeModal:hover {
+    color: red; /* Cambia de color cuando pasas el ratón (opcional) */
+}
+
+
+.user-name {
+    color:black;
+    margin-top: 10px; /* Ajusta el margen superior si es necesario */
+    text-decoration: underline;
+    text-decoration-color: black;
+    font-weight: bold; /* Negrita para mayor visibilidad */
+    font-size: 16px; /* Ajusta el tamaño de la fuente si es necesario */
+    text-align: center; /* Centra el texto */
+    position: relative; /* No debe ser afectado por el candado */
+    z-index: 3; /* Asegura que el nombre de usuario esté encima de todo */
+}
+
+.user-namePr {
+    margin-top: 10px; /* Ajusta el margen superior si es necesario */
+    text-decoration: underline;
+    text-decoration-color: black;
+    color: white; /* Cambia el color del texto a negro */
+    font-weight: bold; /* Negrita para mayor visibilidad */
+    font-size: 16px; /* Ajusta el tamaño de la fuente si es necesario */
+    text-align: center; /* Centra el texto */
+    position: relative; /* No debe ser afectado por el candado */
+    z-index: 3; /* Asegura que el nombre de usuario esté encima de todo */
+}
+
+
+
+
+.user-ciudad {
+    font-size: 14px;  /* Tamaño de la fuente */
+    color: white;      /* Color del texto */
+    position: relative; /* Aseguramos que esté en el flujo normal del contenedor */
+    z-index: 3;        /* Aseguramos que esté por encima del candado pero debajo del nombre de usuario */
+    margin-top: 5px;   /* Espacio arriba */
+    text-align: center; /* Centrar el texto */
+}
+.user-photo-container {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* Circular */
+    background-color: #ccc; /* Fondo gris si no hay imagen */
+    display: inline-block;
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+    position: relative; /* Para que el z-index funcione */
+    z-index: 10; /* Ajusta según necesites para que esté encima del header */
+}
+
+.user-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Imagen circular */
+}
+
+#editProfileModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#editProfileModal .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative; /* Para posicionar el botón de cierre */
+}
+
+#editProfileModal .modal-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+#editProfileModal .form-group {
+    margin-bottom: 15px;
+    text-align: left; /* Alinea todo el grupo de formulario a la izquierda */
+}
+
+#editProfileModal .modal-content label {
+    display: block; /* Asegura que las etiquetas estén en su propia línea */
+    margin-bottom: 5px; /* Espacio entre la etiqueta y el campo de entrada */
+}
+
+#editProfileModal .modal-content input {
+    width: 70%; /* Ocupa el ancho completo del contenedor */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Asegura que el padding no expanda el input */
+}
+
+#editProfileModal .modal-content button {
+    background-color: #cc0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#editProfileModal .modal-content button:hover {
+    background-color: #0056b3;
+}
+
+#editProfileModal .modal-content span {
+    font-size: 1.5em;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.city-option {
+    display: flex; /* Alinea el checkbox y la etiqueta en una fila */
+    align-items: center; /* Alinea verticalmente el checkbox y la etiqueta */
+    margin-bottom: 10px; /* Espaciado entre cada opción de ciudad */
+    justify-content: flex-start; /* Alinea el contenido hacia la izquierda */
+}
+
+.city-option input {
+    margin-right: 5px; /* Espacio entre el checkbox y la etiqueta */
+}
+.city-option label {
+    display: inline-block;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    margin: 0; /* Elimina cualquier margen que cause desplazamiento */
+}
+
+.successModal {
+        position: fixed;
+        z-index: 2000; /* Encima del modal de edición de perfil */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .successModal-content {
+        background-color: #fefefe;
+        padding: 20px;
+        border: 1px solid #888;
+        border-radius: 8px;
+        width: 250px; /* Tamaño ajustado */
+        max-width: 300px; /* Tamaño máximo */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+
+    #closeSuccessModalBtn:hover {
+        background-color: #cc0000;
+    }
+    
+    #editHobbiesModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#editHobbiesModal .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative; /* Para posicionar el botón de cierre */
+}
+
+#editHobbiesModal .modal-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: black; /* Letra en color negro */
+}
+
+.hobby-options1 {
+    text-align: left;
+    margin-bottom: 15px;
+    display: block;
+    height: auto;
+    overflow: visible;
+}
+
+.hobby-options1 label {
+    display: block; /* Alinea cada hobby en una nueva línea */
+    color: black; /* Letra en color negro */
+    margin-bottom: 5px;
+}
+
+#editHobbiesModal .modal-content button {
+    background-color: #cc0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#editHobbiesModal .modal-content button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el modal */
+#userProfileModal .modal-content {
+    font-family: 'Times New Roman', Times, serif;
+    color: black; /* Color negro para la letra */
+}
+
+/* Estilo para el nombre de usuario */
+#profileNickname {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Estilo para la ciudad */
+#profileCity {
+    font-size: 18px;
+    color: black;
+}
+
+/* Estilo para la edad */
+#profileAge {
+    font-size: 18px;
+    color: black;
+}
+
+/* Estilo para los hobbies */
+#profileHobbies {
+    font-size: 16px;
+    color: black;
+}
+
+/* Estilos para los botones en el modal de opciones de perfil */
+#profileModal .modal-content a {
+    display: block; /* Muestra los enlaces como bloques para que sean botones */
+    background-color: #cc0000; /* Color de fondo rojo */
+    color: white; /* Color del texto blanco */
+    padding: 10px 15px; /* Espaciado interno */
+    text-align: center; /* Centra el texto */
+    text-decoration: none; /* Elimina el subrayado */
+    margin-bottom: 10px; /* Espaciado entre botones */
+    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Efecto hover para los botones */
+#profileModal .modal-content a:hover {
+    background-color: #990000; /* Rojo más oscuro al pasar el cursor */
+}
+
+/* General */
+body, p, li, span, input, button, select, textarea, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Modal de opciones de perfil */
+#profileModal .modal-content a {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Modales de edición de perfil y hobbies */
+#editProfileModal .modal-content, #editHobbiesModal .modal-content {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Listas de visitas y likes */
+#visitasList, #likesList, #likesDList {
+    font-family: 'Times New Roman', Times, serif;
+}
+/* Tamaño y estilo del contenedor del mapa */
+.map-google-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altura de la pantalla */
+}
+
+#mapa-google {
+    height: 00px; /* Altura del mapa */
+    width: 800px;  /* Anchura del mapa */
+    border: 1px solid #ccc; /* Bordes para diferenciarlo */
+}
+
+/* Estilo para la InfoWindow (personalizado) */
+.google-info-window {
+    font-size: 14px;
+}
+
+.google-info-window strong {
+    font-weight: bold;
+}
+/* Estilo del botón de volver */
+#volverBtnG button {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+/* Cambiar el color del botón al pasar el mouse */
+#volverBtnG button:hover {
+    background-color: black;
+    color: white;
+}

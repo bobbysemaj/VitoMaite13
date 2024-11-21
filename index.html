@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VitoMaite - No Registrado</title>
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
+        <script src="js/index.js"></script>
+        <link rel="icon" type="image/ico" href="img/logo.png"/>
+    </head>
+    <body>
+        <header>
+            <h1 class="welcome-header">Bienvenido a VitoMaite.</h1>
+            <div class="top-right">
+                <a href="#" id="loginBtn">Login</a>
+                <span class="divider">|</span>
+                <a href="registro.html">Crear cuenta</a>
+            </div>
+        </header>
+
+        <main>
+            <div class="center-content">
+                <div class="map-container">
+                    <img src="img/map.jpg" alt="Mapa" class="map-image">
+                </div>
+
+
+                
+                <img src="img/logo.png" alt="Logo de VitoMaite" class="logo-image">
+
+                <section>
+                    <h2>Buscar Candidatos</h2>
+                    <form id="searchForm" action="#" method="GET" class="search-container">
+                        <div class="search-box">
+                            <input type="text" id="searchQuery" name="query" placeholder="Buscar candidatos...">
+                            <button type="button" class="search-button" id="searchButton">🔍</button>
+                            <button type="button" class="dropdown-button" id="dropdownButton">Filtrar por Criterios</button>
+                        </div>
+                        <div id="dropdown-content" class="dropdown-content">
+                            <div class="slider-container">
+                                <p>Fije la edad mínima deseada:</p>
+                                <input type="range" id="ageMin" name="ageMin" min="18" max="100" value="18" oninput="updateAgeMin(this.value)">
+                                <p>Edad mínima: <span id="min-age-label">18</span></p>
+                            </div>
+                            <div class="slider-container">
+                                <p>Fije la edad máxima deseada:</p>
+                                <input type="range" id="ageMax" name="ageMax" min="18" max="100" value="35" oninput="updateAgeMax(this.value)">
+                                <p>Edad máxima: <span id="max-age-label">35</span></p>
+                            </div>
+                            <label for="gender">Género:</label>
+                            <div class="gender-options">
+                                <label><input type="checkbox" id="hombre" name="gender" value="hombre"> Hombre</label>
+                                <label><input type="checkbox" id="mujer" name="gender" value="mujer"> Mujer</label>
+                                <label><input type="checkbox" id="otro" name="gender" value="otro"> Otro</label>
+                            </div>
+                            <label for="ciudad">Ciudad:</label>
+                            <div class="city-options">
+                                <label><input type="checkbox" id="bilbao" name="ciudad" value="Bilbao"> Bilbao</label>
+                                <label><input type="checkbox" id="donostia" name="ciudad" value="Donostia/San Sebastián"> Donostia/San Sebastián</label>
+                                <label><input type="checkbox" id="vitoria" name="ciudad" value="Vitoria-Gasteiz"> Vitoria-Gasteiz</label>
+                            </div>
+
+                        </div>
+                    </form>
+                </section>
+
+
+                <div class="image-gallery"> 
+
+                </div>
+
+
+        </main>
+        <footer>
+            <div class="footer-links">
+                <span>FAQ</span> | <span>Reseñas</span>
+            </div>
+            <p>&copy; 2024 VitoMaite. Todos los derechos reservados.</p>
+        </footer>
+
+
+
+        
+        <div id="loginModal">
+            <div class="modal-content">
+                <span id="closeLoginModalBtn" style="cursor:pointer; float:right;">&times;</span>
+                <h1>Iniciar Sesión</h1>
+                <form id="loginForm">
+                    <label for="username">Email:</label>
+                    <input type="text" id="username" name="username" required>
+
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <button type="button" id="loginButton">Aceptar</button>
+                    <p>¿No tienes cuenta? <a href="registro.html">Cree tu cuenta aquí.</a></p>
+                </form>
+            </div>
+        </div>
+
+
+    </body>
+
+</html>

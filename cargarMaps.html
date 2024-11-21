@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar por Geolocalización</title>
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <script src="js/cargarMaps.js" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXTINCA8nry_Eu01eYvGVbm0hDxrMdIiI&callback=initMap&libraries=places" async defer></script>
+    <link rel="icon" type="image/ico" href="img/logo.png"/>
+</head>
+<body>
+    <header style="text-align: center; background-color: red; padding: 20px;">
+    <h1 style="color: white; margin: 0;">Buscar Candidatos Cercanos</h1>
+    <a href="indexLogueado.html" id="volverBtnG" style="text-decoration: none; margin-top: 10px; display: inline-block;">
+        <button style="background-color: white; color: black; border: 1px solid black; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+            Volver al Perfil
+        </button>
+    </a>
+</header>
+
+    <main>
+        <div id="mapa-google" style="width: 100%; height: 500px;"></div>
+        <!-- Modal para seleccionar preferencia de género -->
+<div id="geoSearchModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <h2>Seleccionar Preferencias de Género</h2>
+        <div class="button-group">
+            <button id="btnHombre">Hombres</button>
+            <button id="btnMujer">Mujeres</button>
+            <button id="btnAmbos">Ambos</button>
+        </div>
+    </div>
+</div>
+<div style="margin: 20px; display: flex; align-items: center;">
+    <label for="distanceSlider" style="margin-right: 10px;">Distancia: </label>
+    <input id="distanceSlider" type="range" min="0" max="100" value="100" style="margin-right: 10px;" />
+    <span id="distanceValue">100 km</span>
+</div>
+
+
+    </main>
+    <footer>
+        <p>&copy; 2024 VitoMaite. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
