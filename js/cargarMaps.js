@@ -21,19 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (modal)
         modal.style.display = "block";
 
-    if (btnHombre)
-        btnHombre.addEventListener("click", () => setGenderPreference("hombre"));
-    if (btnMujer)
-        btnMujer.addEventListener("click", () => setGenderPreference("mujer"));
-    if (btnAmbos)
-        btnAmbos.addEventListener("click", () => setGenderPreference("both"));
-
-    if (volverBtnG) {
-        volverBtnG.addEventListener("click", () => {
-            limpiarMarcadores();
-            map = null;
-        });
-    }
+    
 
     const params = new URLSearchParams(window.location.search);
     const shouldInitMap = params.get("initMap");
@@ -54,8 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         initMap();
     }
-
-
+   
 });
 
 let latRef = 0;
@@ -117,8 +104,28 @@ window.initMap = function () {
     });
     
 
-    cargarUbicacionActual();
+    
     cargarUsuarios(map);
+     if (btnHombre)
+        btnHombre.addEventListener("click", () => setGenderPreference("hombre"));
+    if (btnMujer)
+        btnMujer.addEventListener("click", () => setGenderPreference("mujer"));
+    if (btnAmbos)
+        btnAmbos.addEventListener("click", () => setGenderPreference("both"));
+function setGenderPreference(preference) {
+    console.log(`Preferencia seleccionada: ${preference}`);
+    const modal22 = document.getElementById("geoSearchModal");
+    modal22.style.display = "none";
+
+    cargarUsuariosConPreferencia(preference);
+}
+    if (volverBtnG) {
+        volverBtnG.addEventListener("click", () => {
+            limpiarMarcadores();
+            map = null;
+        });
+    }
+    cargarUbicacionActual();
 };
 
 
@@ -283,7 +290,6 @@ function setGenderPreference(preference) {
     modal22.style.display = "none";
 
     cargarUsuariosConPreferencia(preference);
-    cargarUbicacionActual();
 }
 
 function cargarUsuariosConPreferencia(preference) {
@@ -342,7 +348,7 @@ function cargarUsuariosConPreferencia(preference) {
                         });
 
                         markers.push(marker);
-
+                        
                         const infoWindow = new google.maps.InfoWindow({
                             content: `<div>
                                         <strong>${usuario.nombre}</strong><br>
