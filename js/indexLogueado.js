@@ -1236,14 +1236,15 @@ function guardarCambios(email, nuevaFoto) {
                 break; // Rompe el bucle si solo necesitas el primer email
             }
         }
-    } else {
-        if (nuevaCiudad) {
+    if (nuevaCiudad) {
             modificarUsuarioCiudad(email, nuevaCiudad);
             agregarCoordenadasUsuario(email,nuevaCiudad);
             limpiarCheckboxesCiudad();
             x = 1;
-        }
+    }
 
+    } else {
+        
 
     }
     if (x === 1) {
