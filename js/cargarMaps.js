@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Geolocalización no está soportada por este navegador.");
         }
         initMap();
+        cargarUbicacionActual();
     }
    
 });
