@@ -119,6 +119,7 @@ function setGenderPreference(preference) {
 
     cargarUsuariosConPreferencia(preference);
 }
+cargarUbicacionActual();
     if (volverBtnG) {
         volverBtnG.addEventListener("click", () => {
             limpiarMarcadores();
