@@ -126,7 +126,7 @@ function setGenderPreference(preference) {
             map = null;
         });
     }
-    cargarUbicacionActual();
+    
 };
 
 
