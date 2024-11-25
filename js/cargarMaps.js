@@ -119,7 +119,7 @@ function setGenderPreference(preference) {
 
     cargarUsuariosConPreferencia(preference);
 }
-cargarUbicacionActual();
+
     if (volverBtnG) {
         volverBtnG.addEventListener("click", () => {
             limpiarMarcadores();
@@ -135,11 +135,7 @@ function limpiarMarcadores() {
     markers.forEach(marker => marker.setMap(null)); // Eliminar marcadores normales
     markers = []; // Vaciar lista de marcadores
 
-    // Eliminar marcador de ubicación actual si existe
-    if (currentLocationMarker) {
-        currentLocationMarker.setMap(null);
-        currentLocationMarker = null; // Reiniciar para evitar reutilización
-    }
+    
 }
 
 // Función para cargar la ubicación actual y asegurarse de que se actualice correctamente
@@ -257,6 +253,7 @@ function cargarUsuarios(map) {
                     }
                 }
             });
+            cargarUbicacionActual();
         };
 
         request.onerror = function () {
@@ -374,7 +371,7 @@ function cargarUsuariosConPreferencia(preference) {
     solicitud.onerror = function () {
         console.error("Error al abrir la base de datos.");
     };
-    cargarUbicacionActual();
+    
 }
 function actualizarZoomMapa(distancia) {
     if (map && currentLocationMarker && dynamicCircle) {
